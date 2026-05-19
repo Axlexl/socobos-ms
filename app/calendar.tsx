@@ -4,10 +4,10 @@ import {
     Text, TouchableOpacity, View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { COLORS } from '../constants';
-import { useNav } from '../hooks/useNav';
-import { useBillStore, usePaymentStore, useTenancyStore } from '../store';
-import { formatDate, formatMonthLabel, formatPeso } from '../utils';
+import { COLORS } from '../src/constants';
+import { useNav } from '../src/hooks/useNav';
+import { formatDate, formatMonthLabel, formatPeso } from '../src/utils';
+import { useBillStore, usePaymentStore, useTenancyStore } from '../src/store';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 

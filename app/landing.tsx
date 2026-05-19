@@ -1,8 +1,8 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { COLORS } from '../constants';
-import { useNav } from '../hooks/useNav';
+import { COLORS } from '../src/constants';
+import { useNav } from '../src/hooks/useNav';
 
 const { width } = Dimensions.get('window');
 

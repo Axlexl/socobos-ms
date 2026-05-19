@@ -5,10 +5,10 @@ import {
     StyleSheet, Text, TouchableOpacity, View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { COLORS } from '../../constants';
-import { useNav } from '../../hooks/useNav';
+import { COLORS } from '../../src/constants';
+import { useNav } from '../../src/hooks/useNav';
+import { formatDate, formatMonthLabel, formatPeso } from '../../src/utils';
 import { useBillStore, useTenancyStore } from '../../store';
-import { formatDate, formatMonthLabel, formatPeso } from '../../utils';
 
 export default function PastRecordDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();

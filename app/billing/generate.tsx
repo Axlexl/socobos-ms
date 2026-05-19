@@ -5,15 +5,15 @@ import {
     StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button } from '../../components/ui/Button';
-import { InputField } from '../../components/ui/InputField';
-import { COLORS } from '../../constants';
-import { useNav } from '../../hooks/useNav';
-import { useBillStore, useRatesStore, useRoomStore, useTenancyStore } from '../../store';
+import { InputField } from '../../src/components/ui/InputField';
+import { COLORS } from '../.../../src/components/ui/InputField
+import { useNav } from '../../src/hooks/useNav';
+import { Button } from '../../src/components/ui/Button';
+import { useBillStore, useRatesStore, useRoomStore, useTenancyStore } from '../../src/store';
 import {
     calcBillAmounts, currentMonthKey, formatPeso,
     generateId, todayISO,
-} from '../../utils';
+} from '../../src/utils';
 
 export default function GenerateBillScreen() {
   const { tenancyId } = useLocalSearchParams<{ tenancyId: string }>();

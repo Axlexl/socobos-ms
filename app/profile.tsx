@@ -2,9 +2,9 @@ import { router } from 'expo-router';
 import React from 'react';
 import { Alert, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { apiLogout } from '../api/client';
-import { COLORS } from '../constants';
-import { useNav } from '../hooks/useNav';
+import { apiLogout } from '../src/api/client';
+import { COLORS } from '../src/constants';
+import { useNav } from '../src/hooks/useNav';
 
 export default function ProfileScreen() {
   const nav = useNav();

@@ -4,10 +4,10 @@ import {
     TouchableOpacity, View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { COLORS } from '../constants';
-import { useNav } from '../hooks/useNav';
-import { useBillStore, useTenancyStore } from '../store';
-import { formatDate, formatPeso } from '../utils';
+import { COLORS } from '../src/constants';
+import { useNav } from '../src/hooks/useNav';
+import { formatDate, formatPeso } from '../src/utils';
+import { useBillStore, useTenancyStore } from '../src/store';
 
 export default function PastRecordsScreen() {
   const nav = useNav();

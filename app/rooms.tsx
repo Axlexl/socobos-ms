@@ -4,10 +4,10 @@ import {
     TouchableOpacity, View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { COLORS } from '../constants';
-import { useNav } from '../hooks/useNav';
+import { COLORS } from '../src/constants';
+import { useNav } from '../src/hooks/useNav';
+import { formatPeso } from '../src/utils';
 import { useRoomStore, useTenancyStore } from '../store';
-import { formatPeso } from '../utils';
 
 export default function RoomsScreen() {
   const nav = useNav();

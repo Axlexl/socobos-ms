@@ -5,9 +5,9 @@ import {
     Text, TextInput, TouchableOpacity, View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { apiLogin } from '../api/client';
-import { COLORS } from '../constants';
-import { initStores } from '../store';
+import { apiLogin } from '../src/api/client';
+import { COLORS } from '../src/constants';
+import { initStores } from '../src/store';
 
 export default function AuthScreen() {
   const [password, setPassword] = useState('');

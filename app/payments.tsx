@@ -6,11 +6,11 @@ import {
     TouchableOpacity, View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { COLORS } from '../constants';
-import { useNav } from '../hooks/useNav';
-import { useBillStore, usePaymentStore, useTenancyStore } from '../store';
-import type { MonthlyBill } from '../types';
-import { formatDate, formatMonthLabel, formatPeso, generateId, todayISO } from '../utils';
+import { COLORS } from '../src/constants';
+import { useNav } from '../src/hooks/useNav';
+import type { MonthlyBill } from '../src/types';
+import { formatDate, formatMonthLabel, formatPeso, generateId, todayISO } from '../src/utils';
+import { useBillStore, usePaymentStore, useTenancyStore } from '../src/store';
 
 type Filter = 'all' | 'unpaid' | 'partial' | 'paid';
 

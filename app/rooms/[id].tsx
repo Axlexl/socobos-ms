@@ -5,12 +5,12 @@ import {
     ScrollView, StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button } from '../../components/ui/Button';
 import { InputField } from '../../components/ui/InputField';
-import { ADVANCE_PAYMENT, COLORS, SECURITY_DEPOSIT } from '../../constants';
-import { useNav } from '../../hooks/useNav';
+import { ADVANCE_PAYMENT, CO../../src/components/ui/InputField'../../constants';
+import { useNav } from '../../src/hooks/useNav';
+import { Button } from '../../src/components/ui/Button';
 import { useBillStore, useRoomStore, useTenancyStore } from '../../store';
-import { formatDate, formatPeso, generateId, todayISO } from '../../utils';
+import { formatDate, formatPeso, generateId, todayISO } from '../../src/utils';
 
 export default function RoomDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();

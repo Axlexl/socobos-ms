@@ -4,11 +4,11 @@ import {
     StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button } from '../components/ui/Button';
-import { InputField } from '../components/ui/InputField';
-import { COLORS } from '../constants';
-import { useNav } from '../hooks/useNav';
-import { useRatesStore } from '../store';
+import { InputField } from '../src/components/ui/InputField';
+import { COLORS } from '../c../src/components/ui/InputField
+import { useNav } from '../src/hooks/useNav';
+import { Button } from '../src/components/ui/Button';
+import { useRatesStore } from '../src/store';
 
 export default function RatesScreen() {
   const nav = useNav();

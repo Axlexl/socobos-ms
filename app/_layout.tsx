@@ -2,10 +2,10 @@ import { Stack, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
-import { getToken } from '../api/client';
-import { COLORS } from '../constants';
-import { NavigationLoadingProvider } from '../context/NavigationLoadingContext';
-import { initStores } from '../store';
+import { getToken } from '../src/api/client';
+import { COLORS } from '../src/constants';
+import { NavigationLoadingProvider } from '../src/context/NavigationLoadingContext';
+import { initStores } from '../src/store';
 
 export default function RootLayout() {
   const [checking, setChecking] = useState(true);

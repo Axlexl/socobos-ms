@@ -4,12 +4,12 @@ import {
     StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button } from '../../components/ui/Button';
-import { InputField } from '../../components/ui/InputField';
-import { COLORS } from '../../constants';
-import { useNav } from '../../hooks/useNav';
-import { useRoomStore } from '../../store';
-import { generateId } from '../../utils';
+import { InputField } from '../../src/components/ui/InputField';
+import { COLORS } from '../.../../src/components/ui/InputField
+import { useNav } from '../../src/hooks/useNav';
+import { Button } from '../../src/components/ui/Button';
+import { useRoomStore } from '../../src/store';
+import { generateId } from '../../src/utils';
 
 export default function AddRoomScreen() {
   const nav = useNav();

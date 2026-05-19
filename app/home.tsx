@@ -1,10 +1,10 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { COLORS } from '../constants';
-import { useNav } from '../hooks/useNav';
-import { useBillStore, useRoomStore } from '../store';
-import { formatPeso } from '../utils';
+import { COLORS } from '../src/constants';
+import { useNav } from '../src/hooks/useNav';
+import { formatPeso } from '../src/utils';
+import { useBillStore, useRoomStore } from '../src/store';
 
 // ── Menu items ────────────────────────────────────────────────────────────────
 const MENU = [

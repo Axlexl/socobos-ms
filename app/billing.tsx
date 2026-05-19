@@ -1,10 +1,10 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { COLORS } from '../constants';
-import { useNav } from '../hooks/useNav';
-import { useBillStore, useRoomStore, useTenancyStore } from '../store';
-import { formatMonthLabel, formatPeso } from '../utils';
+import { COLORS } from '../src/constants';
+import { useNav } from '../src/hooks/useNav';
+import { formatMonthLabel, formatPeso } from '../src/utils';
+import { useBillStore, useRoomStore, useTenancyStore } from '../src/store';
 
 export default function BillingScreen() {
   const nav = useNav();
