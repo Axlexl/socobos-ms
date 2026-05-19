@@ -1,16 +1,17 @@
-import { signOut } from 'firebase/auth';
+import { router } from 'expo-router';
 import React from 'react';
 import { Alert, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { apiLogout } from '../api/client';
 import { COLORS } from '../constants';
-import { auth } from '../firebase/config';
 import { useNav } from '../hooks/useNav';
 
 export default function ProfileScreen() {
   const nav = useNav();
 
   async function doLogout() {
-    await signOut(auth);
+    await apiLogout();
+    router.replace('/landing' as any);
   }
 
   function handleLogout() {
@@ -26,12 +27,11 @@ export default function ProfileScreen() {
 
   const MENU = [
     { label: 'Utility Rates', sub: 'Electricity & water rates', icon: '⚡', route: '/rates' },
-    { label: 'Past Records', sub: 'Moved-out tenant history', icon: '📋', route: '/past-records' },
+    { label: 'Past Records',  sub: 'Moved-out tenant history',  icon: '📋', route: '/past-records' },
   ] as const;
 
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
-      {/* Header */}
       <View style={styles.header}>
         <View style={styles.topAccent} />
         <View style={styles.headerRow}>
@@ -44,7 +44,6 @@ export default function ProfileScreen() {
       </View>
 
       <View style={styles.container}>
-        {/* Avatar card */}
         <View style={styles.avatarCard}>
           <View style={styles.avatar}>
             <Text style={styles.avatarText}>A</Text>
@@ -59,7 +58,6 @@ export default function ProfileScreen() {
           </View>
         </View>
 
-        {/* Menu */}
         <View style={styles.menuCard}>
           {MENU.map((item, i) => (
             <TouchableOpacity
@@ -80,7 +78,6 @@ export default function ProfileScreen() {
           ))}
         </View>
 
-        {/* Logout */}
         <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout} activeOpacity={0.8}>
           <Text style={styles.logoutText}>Log Out</Text>
         </TouchableOpacity>
@@ -95,67 +92,30 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: COLORS.background },
   header: { backgroundColor: COLORS.primary },
   topAccent: { height: 3, backgroundColor: COLORS.accent },
-  headerRow: {
-    flexDirection: 'row', alignItems: 'center',
-    paddingHorizontal: 16, paddingVertical: 14,
-  },
+  headerRow: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 14 },
   backBtn: { width: 32 },
   backIcon: { fontSize: 28, color: '#fff', lineHeight: 32 },
   headerTitle: { flex: 1, textAlign: 'center', fontSize: 17, fontWeight: '700', color: '#fff', letterSpacing: 0.3 },
   container: { flex: 1, padding: 20, gap: 16 },
-
-  avatarCard: {
-    backgroundColor: COLORS.surface, borderRadius: 16, padding: 18,
-    flexDirection: 'row', alignItems: 'center', gap: 14,
-    shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05, shadowRadius: 8, elevation: 2,
-  },
-  avatar: {
-    width: 56, height: 56, borderRadius: 16,
-    backgroundColor: COLORS.primary,
-    alignItems: 'center', justifyContent: 'center',
-  },
+  avatarCard: { backgroundColor: COLORS.surface, borderRadius: 16, padding: 18, flexDirection: 'row', alignItems: 'center', gap: 14, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, shadowRadius: 8, elevation: 2 },
+  avatar: { width: 56, height: 56, borderRadius: 16, backgroundColor: COLORS.primary, alignItems: 'center', justifyContent: 'center' },
   avatarText: { fontSize: 24, fontWeight: '800', color: COLORS.accent },
   avatarInfo: { flex: 1, gap: 3 },
   name: { fontSize: 17, fontWeight: '700', color: COLORS.textPrimary },
   role: { fontSize: 12, color: COLORS.textMuted },
-  activeBadge: {
-    flexDirection: 'row', alignItems: 'center', gap: 5,
-    backgroundColor: COLORS.successLight, paddingHorizontal: 10,
-    paddingVertical: 5, borderRadius: 99,
-  },
+  activeBadge: { flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: COLORS.successLight, paddingHorizontal: 10, paddingVertical: 5, borderRadius: 99 },
   activeDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: COLORS.success },
   activeText: { fontSize: 11, fontWeight: '600', color: COLORS.success },
-
-  menuCard: {
-    backgroundColor: COLORS.surface, borderRadius: 16, overflow: 'hidden',
-    shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05, shadowRadius: 8, elevation: 2,
-  },
-  menuItem: {
-    flexDirection: 'row', alignItems: 'center',
-    padding: 16, gap: 14,
-  },
+  menuCard: { backgroundColor: COLORS.surface, borderRadius: 16, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, shadowRadius: 8, elevation: 2 },
+  menuItem: { flexDirection: 'row', alignItems: 'center', padding: 16, gap: 14 },
   menuItemBorder: { borderBottomWidth: 1, borderBottomColor: COLORS.divider },
-  menuIconWrap: {
-    width: 40, height: 40, borderRadius: 10,
-    backgroundColor: COLORS.background,
-    alignItems: 'center', justifyContent: 'center',
-  },
+  menuIconWrap: { width: 40, height: 40, borderRadius: 10, backgroundColor: COLORS.background, alignItems: 'center', justifyContent: 'center' },
   menuIcon: { fontSize: 18 },
   menuText: { flex: 1, gap: 2 },
   menuLabel: { fontSize: 15, fontWeight: '600', color: COLORS.textPrimary },
   menuSub: { fontSize: 12, color: COLORS.textMuted },
   menuChevron: { fontSize: 20, color: COLORS.textMuted },
-
-  logoutBtn: {
-    backgroundColor: COLORS.dangerLight, borderRadius: 14,
-    paddingVertical: 16, alignItems: 'center',
-    borderWidth: 1, borderColor: '#FECACA',
-  },
+  logoutBtn: { backgroundColor: COLORS.dangerLight, borderRadius: 14, paddingVertical: 16, alignItems: 'center', borderWidth: 1, borderColor: '#FECACA' },
   logoutText: { fontSize: 15, fontWeight: '700', color: COLORS.danger },
-  version: {
-    textAlign: 'center', fontSize: 11,
-    color: COLORS.textMuted, letterSpacing: 0.5,
-  },
+  version: { textAlign: 'center', fontSize: 11, color: COLORS.textMuted, letterSpacing: 0.5 },
 });

@@ -1,13 +1,10 @@
 import React from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS } from '../constants';
 import { useNav } from '../hooks/useNav';
 import { useBillStore, useRoomStore } from '../store';
 import { formatPeso } from '../utils';
-
-const { width } = Dimensions.get('window');
-const CARD_W = (width - 48) / 2; // 2 columns with padding
 
 // ── Menu items ────────────────────────────────────────────────────────────────
 const MENU = [
@@ -120,7 +117,7 @@ export default function HomeScreen() {
             {MENU.map((item) => (
               <TouchableOpacity
                 key={item.label}
-                style={[s.menuCard, { width: CARD_W }]}
+                style={s.menuCard}
                 onPress={() => nav.push(item.route as any, `Opening ${item.label}...`)}
                 activeOpacity={0.75}
               >
@@ -206,13 +203,14 @@ const s = StyleSheet.create({
   },
   menuCard: {
     backgroundColor: COLORS.surface, borderRadius: 16, overflow: 'hidden',
+    width: '47.5%',
     shadowColor: '#000', shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.07, shadowRadius: 8, elevation: 3,
   },
   cardBand: {
-    height: 72, alignItems: 'center', justifyContent: 'center',
+    height: 80, alignItems: 'center', justifyContent: 'center',
   },
-  cardIcon: { fontSize: 30 },
+  cardIcon: { fontSize: 32 },
   cardBody: { padding: 12, gap: 2 },
   cardLabel: { fontSize: 14, fontWeight: '700', color: COLORS.textPrimary },
   cardSub: { fontSize: 11, color: COLORS.textMuted },

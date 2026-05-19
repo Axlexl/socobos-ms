@@ -1,40 +1,46 @@
 import { Stack, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { onAuthStateChanged } from 'firebase/auth';
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
+import { getToken } from '../api/client';
+import { COLORS } from '../constants';
 import { NavigationLoadingProvider } from '../context/NavigationLoadingContext';
-import { auth } from '../firebase/config';
 import { initStores } from '../store';
 
 export default function RootLayout() {
-  const unsubStoresRef = useRef<(() => void) | null>(null);
+  const [checking, setChecking] = useState(true);
 
   useEffect(() => {
-    // Listen to Firebase Auth state
-    const unsubAuth = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User just logged in — start Firestore listeners now (auth is ready)
-        if (!unsubStoresRef.current) {
-          unsubStoresRef.current = initStores();
+    async function bootstrap() {
+      try {
+        const token = await getToken();
+        if (token) {
+          // Already logged in — load data then go home
+          await initStores();
+          router.replace('/home' as any);
+        } else {
+          router.replace('/landing' as any);
         }
-        router.replace('/home' as any);
-      } else {
-        // User logged out — stop Firestore listeners to avoid permission errors
-        unsubStoresRef.current?.();
-        unsubStoresRef.current = null;
+      } catch {
         router.replace('/landing' as any);
+      } finally {
+        setChecking(false);
       }
-    });
-
-    return () => {
-      unsubAuth();
-      unsubStoresRef.current?.();
-    };
+    }
+    bootstrap();
   }, []);
+
+  if (checking) {
+    return (
+      <View style={{ flex: 1, backgroundColor: COLORS.primary, alignItems: 'center', justifyContent: 'center' }}>
+        <ActivityIndicator size="large" color={COLORS.accent} />
+      </View>
+    );
+  }
 
   return (
     <NavigationLoadingProvider>
-      <StatusBar style="light" backgroundColor="#208AEF" />
+      <StatusBar style="light" backgroundColor={COLORS.primary} />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
         <Stack.Screen name="landing" />
@@ -51,7 +57,6 @@ export default function RootLayout() {
         <Stack.Screen name="rates" />
         <Stack.Screen name="profile" />
         <Stack.Screen name="calendar" />
-        <Stack.Screen name="admin" />
       </Stack>
     </NavigationLoadingProvider>
   );
