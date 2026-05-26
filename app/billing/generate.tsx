@@ -97,7 +97,7 @@ export default function GenerateBillScreen() {
 
   // Compute due dates for display
   const { rentDue, utilityDue } = calcDueDates(tenancy.moveInDate, month);
-  const moveInDay = new Date(tenancy.moveInDate).getDate();
+  const moveInFull = tenancy.moveInDate; // e.g. "2026-05-15"
 
   async function handleGenerate() {
     if (!prevElec.trim() || !currElec.trim()) { setError('Enter both electricity readings.'); return; }
@@ -173,7 +173,7 @@ export default function GenerateBillScreen() {
               <View style={st.dueDateItem}>
                 <Text style={st.dueDateLabel}>🏠 Rent</Text>
                 <Text style={st.dueDateValue}>{rentDue}</Text>
-                <Text style={st.dueDateNote}>Day {moveInDay} of each month</Text>
+                <Text style={st.dueDateNote}>Moved in: {moveInFull}</Text>
               </View>
               <View style={st.dueDateDivider} />
               <View style={st.dueDateItem}>

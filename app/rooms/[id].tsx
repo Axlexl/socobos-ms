@@ -148,7 +148,7 @@ export default function RoomDetailScreen() {
               <InfoRow label="Move-in"     value={formatDate(tenancy.moveInDate)} />
               <View style={styles.divider} />
               <Text style={styles.cardSubtitle}>Due Dates</Text>
-              <InfoRow label="Rent due"              value={`Every ${new Date(tenancy.moveInDate).getDate()}th of the month`} />
+              <InfoRow label="Rent due"              value={`Every ${new Date(tenancy.moveInDate).getDate()} of the month (move-in date)`} />
               <InfoRow label="Electricity & Water due" value="Every 5th of the month" />
               <View style={styles.divider} />
               <Text style={styles.cardSubtitle}>Initial Payments</Text>

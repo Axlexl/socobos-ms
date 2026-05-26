@@ -6,8 +6,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS } from '../src/constants';
 import { useNav } from '../src/hooks/useNav';
+import { useRoomStore, useTenancyStore } from '../src/store';
 import { formatPeso } from '../src/utils';
-import { useRoomStore, useTenancyStore } from '../store';
 
 export default function RoomsScreen() {
   const nav = useNav();

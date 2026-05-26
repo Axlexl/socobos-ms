@@ -7,8 +7,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS } from '../../src/constants';
 import { useNav } from '../../src/hooks/useNav';
+import { useBillStore, useTenancyStore } from '../../src/store';
 import { formatDate, formatMonthLabel, formatPeso } from '../../src/utils';
-import { useBillStore, useTenancyStore } from '../../store';
 
 export default function PastRecordDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();

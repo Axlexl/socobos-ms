@@ -4,10 +4,10 @@ import {
     StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { InputField } from '../../src/components/ui/InputField';
-import { COLORS } from '../.../../src/components/ui/InputField
-import { useNav } from '../../src/hooks/useNav';
 import { Button } from '../../src/components/ui/Button';
+import { InputField } from '../../src/components/ui/InputField';
+import { COLORS } from '../../src/constants';
+import { useNav } from '../../src/hooks/useNav';
 import { useRoomStore } from '../../src/store';
 import { generateId } from '../../src/utils';
 
