@@ -19,11 +19,11 @@ import {
     apiUpdateRates,
     apiUpdateRoom,
     apiUpdateTenancy,
-} from '../src/api/client';
+} from '../api/client';
 import {
     DEFAULT_ELECTRICITY_RATE,
     DEFAULT_WATER_RATE,
-} from '../src/constants';
+} from '../constants';
 import type {
     MonthlyBill,
     Payment,
