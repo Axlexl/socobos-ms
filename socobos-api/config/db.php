@@ -2,10 +2,10 @@
 // ── Database connection ────────────────────────────────────────
 // Edit these values to match your hosting environment
 
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'socobos-api');
-define('DB_USER', 'root');        // change to your MySQL username
-define('DB_PASS', '');            // change to your MySQL password
+define('DB_HOST', 'sql308.infinityfree.com');
+define('DB_NAME', 'if0_42024407_socobos');
+define('DB_USER', 'if0_42024407');
+define('DB_PASS', 'YOUR_VPANEL_PASSWORD'); // ← replace with your vPanel password
 
 function getDB(): PDO {
     static $pdo = null;

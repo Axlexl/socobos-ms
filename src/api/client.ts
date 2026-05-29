@@ -13,7 +13,7 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const BASE_URL = 'http://192.168.1.61/socobos-api'; // your PC's local IP
+export const BASE_URL = 'https://socobos.infinityfreeapp.com/socobos-api';
 
 const TOKEN_KEY = 'auth_token';
 

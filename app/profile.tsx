@@ -2,7 +2,6 @@ import { router } from 'expo-router';
 import React from 'react';
 import { Alert, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { apiLogout } from '../src/api/client';
 import { COLORS } from '../src/constants';
 import { useNav } from '../src/hooks/useNav';
 
@@ -10,7 +9,7 @@ export default function ProfileScreen() {
   const nav = useNav();
 
   async function doLogout() {
-    await apiLogout();
+    await clearAuth();
     router.replace('/landing' as any);
   }
 

@@ -1,13 +1,9 @@
 -- ============================================================
 -- SOCOBOS Boarding House Management System
--- Database: socobos-api
--- Run this in phpMyAdmin → SQL tab
+-- Database: if0_42024407_socobos
+-- You are already inside the correct database in phpMyAdmin.
+-- Just paste this entire file into the SQL tab and click Go.
 -- ============================================================
-
-CREATE DATABASE IF NOT EXISTS `socobos-api`
-  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
-USE `socobos-api`;
 
 -- ── Rooms ─────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS `rooms` (

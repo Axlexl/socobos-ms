@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import {
@@ -5,9 +6,17 @@ import {
     Text, TextInput, TouchableOpacity, View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { apiLogin } from '../src/api/client';
 import { COLORS } from '../src/constants';
-import { initStores } from '../src/store';
+
+// ── The app password — change this to whatever you want ──────────────────────
+const APP_PASSWORD = 'teresa123';
+const AUTH_KEY     = 'socobos_auth';
+
+export async function saveAuth()  { await AsyncStorage.setItem(AUTH_KEY, 'true'); }
+export async function clearAuth() { await AsyncStorage.removeItem(AUTH_KEY); }
+export async function isLoggedIn(): Promise<boolean> {
+  return (await AsyncStorage.getItem(AUTH_KEY)) === 'true';
+}
 
 export default function AuthScreen() {
   const [password, setPassword] = useState('');
@@ -19,22 +28,15 @@ export default function AuthScreen() {
     if (!password.trim()) { setError('Password is required.'); return; }
     setError('');
     setLoading(true);
-    try {
-      await apiLogin(password.trim());
-      await initStores();
+    // Small delay so the button feels responsive
+    await new Promise((r) => setTimeout(r, 300));
+    if (password === APP_PASSWORD) {
+      await saveAuth();
       router.replace('/home' as any);
-    } catch (e: any) {
-      const msg = e?.message ?? '';
-      if (msg.includes('Incorrect')) {
-        setError('Incorrect password. Please try again.');
-      } else if (msg.includes('fetch') || msg.includes('Network')) {
-        setError('Cannot reach server. Check your connection.');
-      } else {
-        setError('Login failed. Try again.');
-      }
-    } finally {
-      setLoading(false);
+    } else {
+      setError('Incorrect password. Please try again.');
     }
+    setLoading(false);
   }
 
   return (

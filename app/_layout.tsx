@@ -2,32 +2,18 @@ import { Stack, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
-import { getToken } from '../src/api/client';
 import { COLORS } from '../src/constants';
 import { NavigationLoadingProvider } from '../src/context/NavigationLoadingContext';
-import { initStores } from '../src/store';
+import { isLoggedIn } from './auth';
 
 export default function RootLayout() {
   const [checking, setChecking] = useState(true);
 
   useEffect(() => {
-    async function bootstrap() {
-      try {
-        const token = await getToken();
-        if (token) {
-          // Already logged in — load data then go home
-          await initStores();
-          router.replace('/home' as any);
-        } else {
-          router.replace('/landing' as any);
-        }
-      } catch {
-        router.replace('/landing' as any);
-      } finally {
-        setChecking(false);
-      }
-    }
-    bootstrap();
+    isLoggedIn().then((loggedIn) => {
+      router.replace(loggedIn ? '/home' as any : '/landing' as any);
+      setChecking(false);
+    });
   }, []);
 
   if (checking) {
